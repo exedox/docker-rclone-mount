@@ -19,7 +19,7 @@ trap _terminate SIGHUP SIGINT SIGTERM SIGQUIT SIGABRT
 [[ -e ${CONFIG_DIR}/${CONFIG_FILE} ]] || { echo "ERROR: ${CONFIG_DIR}/${CONFIG_FILE} does not exist!" 1>&2; exit 1; }
 
 # MOUNT REMOTE TO MOUNT DIRECTORY
-/bin/rclone --config ${CONFIG_DIR}/${CONFIG_FILE} mount ${MOUNT_NAME}: ${MOUNT_DIR} $@ --allow-non-empty --allow-other --uid ${UID} --gid ${GID} --rc -v &
+/bin/rclone --config ${CONFIG_DIR}/${CONFIG_FILE} mount ${MOUNT_NAME}: ${MOUNT_DIR} $@ --allow-non-empty --allow-other -allow-other --dir-cache-time 672h --vfs-cache-max-age 675h --vfs-read-chunk-size 64M --vfs-read-chunk-size-limit 1G --buffer-size 32M --uid ${UID} --gid ${GID} --rc -v &
 PID=${!}
 echo ${PID} > ${MOUNT_PID_FILE}
 
