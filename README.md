@@ -1,5 +1,5 @@
 # docker-rclone-mount
-Mount a rclone remote inside a docker container.
+Mount a rclone remote inside a docker container.  This fork is for personal learning purposes only. Please check out danielheene's for original stuff.
 
 ### Start
 ```bash
